@@ -20,6 +20,7 @@ class Submission extends Model {
         'user_id',
         'ip_address',
         'quiz_id',
+        'user_id'
     ];
 
     /**

@@ -19,6 +19,8 @@
                 {!! Form::open(['url' => '/quizzes/create', 'method' => 'POST' ]) !!}
                 <input type="hidden" name="quiz_id"
                        value="{{ $quiz->id }}">
+                <input type="hidden" name="user_id"
+                       value="{{ Auth::user()->id }}">
 
                 <div class="row">
 
@@ -50,7 +52,6 @@
                                    value="{{ $question->id }}">
                             <input type="hidden" name="answer[{{ $question->id }}][quiz_id]"
                                    value="{{ $quiz->id }}">
-
                         </div>
 
                     @endforeach

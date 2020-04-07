@@ -70,7 +70,8 @@ class QuizController extends AppBaseController
 
         $submission = Submission::create([
             'ip_address' => $_SERVER['REMOTE_ADDR'],
-            'quiz_id' => $formInput['quiz_id']
+            'quiz_id' => $formInput['quiz_id'],
+            'user_id' => $formInput['user_id']
             ]);
 
         foreach ($questionAnswers as $answer) {
