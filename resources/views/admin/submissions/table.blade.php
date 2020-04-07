@@ -6,7 +6,7 @@
 
         <th>Quiz</th>
         <th>Date</th>
-        <th>Ip Address</th>
+        <th>IP Address</th>
         <th colspan="3">
             Action
         </th>

@@ -34,7 +34,7 @@
 
         </div>
 
-        <div class="card-block">
+        <div class="card-block p-3">
 
             @include( 'admin.questions.show_fields' )
 
