@@ -4,7 +4,7 @@
 
     <div class="card text-primary card-outline-primary mb-4 text-center">
 
-        <div class="card-block">
+        <div class="card-block pt-2">
 
             <blockquote class="card-blockquote">
 

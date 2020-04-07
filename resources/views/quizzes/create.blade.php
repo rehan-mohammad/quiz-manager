@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container quiz-container">
 
         @if (isset($quiz))
 
@@ -24,22 +24,26 @@
 
                     @foreach($quiz->questions()->get() as $question)
 
-                        <div class="form-group col-sm-12">
+                        <div class="form-group col-sm-12 quiz-form">
                             <hr>
 
                             <h4>{!! Form::label('answer', $question->title) !!}</h4>
-                            <small>{{ $question->description }}</small>
+                            <small class="question-desc">{{ $question->description }}</small>
                             <br>
 
                             <?php
 
                             $questionOptions = json_decode($question->question_options);
 
-                            foreach ($questionOptions as $option) {
-                                echo "<p>$option<p>", Form::radio('answer[' . $question->id . '][answer]', $option);
-                            }
-
                             ?>
+
+                            @foreach ($questionOptions as $option)
+
+                            <p class='option-text'>{{$option}}<p>
+
+                            {{ Form::radio('answer[' . $question->id . '][answer]', $option) }}
+
+                            @endforeach
 
 
                             <input type="hidden" name="answer[{{ $question->id }}][question_id]"
@@ -54,7 +58,7 @@
                 </div>
 
                 <!-- Submit Field -->
-                <div class="form-group col-sm-12">
+                <div class="form-group">
 
                     {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
 

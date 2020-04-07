@@ -4,11 +4,11 @@
     @include( 'layouts.head' )
     @yield('head-content')
 </head>
-<body style="background-image: url({{ url('/') }}/images/bg.jpg); background-repeat: no-repeat; background-position: 50% 0; background-color: #E2EBF0;">
+<body>
 
     @include( 'layouts.header' )
 
-    <div class="container content-container page-content-container">
+    <div class="container content-container page-content-container card">
 
         @include( 'common.errors')
         @include( 'common.flash-message')
