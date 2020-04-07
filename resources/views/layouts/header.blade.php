@@ -1,4 +1,4 @@
-<div class="container content-container page-content-container main-header-section">
+<div class="container content-container page-content-container main-header-section card">
 
     <nav class="nav navbar bg-faded">
 
