@@ -6,6 +6,7 @@ use App\Http\Requests\CreateSubmissionRequest;
 use App\Http\Requests\UpdateSubmissionRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Submission;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -78,13 +79,15 @@ class SubmissionController extends AppBaseController {
 
         $submission = Submission::find( $id );
 
+        $user = User::find($submission->user_id);
+
         if ( empty( $submission ) ) {
 
             return redirect( route( 'submissions.index' ) )->withErrors( [ 'notfound' => 'Submission not found' ] );
 
         }
 
-        return view( 'admin.submissions.show', compact( 'submission' ) );
+        return view( 'admin.submissions.show', compact( 'submission', 'user' ) );
 
     }
 
