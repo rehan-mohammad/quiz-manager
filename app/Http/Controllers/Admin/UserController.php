@@ -59,11 +59,20 @@ class UserController extends AppBaseController {
 
         $formInput = $request->all();
 
+        $formInput['limited'] = 0;
+
+        if($formInput['is_admin'] == 2){
+            $formInput['is_admin'] = 1;
+
+            $formInput['limited'] = 1;
+        }
+
         $user = User::create([
             'name' => $formInput['name'],
             'email' => $formInput['email'],
             'password' => bcrypt($formInput['password']),
-            'is_admin' => $formInput['is_admin']
+            'is_admin' => $formInput['is_admin'],
+            'limited' => $formInput['limited'],
         ]);
 
         Session::flash( 'flash_message', 'User saved successfully.' );
@@ -126,6 +135,14 @@ class UserController extends AppBaseController {
 
         $user = User::find( $id );
         $formInput = $request->all();
+
+
+        if($formInput['is_admin'] == 2){
+            $formInput['is_admin'] = 1;
+
+            $formInput['limited'] = 1;
+        }
+
 
         if ( empty( $user ) ) {
 

@@ -46,18 +46,21 @@
                             <i class="material-icons">visibility</i>
                         </a>
 
-                        <a href="{!! route('users.edit', [$user->id]) !!}" class='btn btn-primary btn-sm'>
-                            <i class="material-icons">mode_edit</i>
-                        </a>
+                        @if (Auth::user()->limited == "0")
+                            <a href="{!! route('users.edit', [$user->id]) !!}" class='btn btn-primary btn-sm'>
+                                <i class="material-icons">mode_edit</i>
+                            </a>
 
-                        {!! Form::button(
-                            '<i class="material-icons">delete</i>',
-                            [
-                                'type' => 'submit',
-                                'class' => 'btn btn-danger btn-sm',
-                                'onclick' => "return confirm( 'Are you sure?' )"
-                            ]
-                        ) !!}
+                            {!! Form::button(
+                                '<i class="material-icons">delete</i>',
+                                [
+                                    'type' => 'submit',
+                                    'class' => 'btn btn-danger btn-sm',
+                                    'onclick' => "return confirm( 'Are you sure?' )"
+                                ]
+                            ) !!}
+
+                        @endif
 
                     </div>
 

@@ -30,9 +30,9 @@
 
 <div class="form-group col-sm-6 {{ $errors->has( 'is_admin' ) ? 'has-danger' : ''}}">
 
-    {!! Form::label('is_admin', 'Is Admin:') !!}
+    {!! Form::label('is_admin', 'Permissions:') !!}
 
-    {!! Form::select('is_admin', ["1"=>"Yes", "0"=>"No"] , null, ['class' => 'form-control']) !!}
+    {!! Form::select('is_admin', ["1"=>"Admin", "0"=>"Guest", "2" => "Limited"] , null, ['class' => 'form-control']) !!}
 
     {!! $errors->first('is_admin', '<div class="form-control-feedback">:message</div>') !!}
 

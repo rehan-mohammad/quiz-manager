@@ -33,14 +33,16 @@
                             <i class="material-icons">visibility</i>
                         </a>
 
-                        {!! Form::button(
-                            '<i class="material-icons">delete</i>',
-                            [
-                                'type' => 'submit',
-                                'class' => 'btn btn-danger btn-sm',
-                                'onclick' => "return confirm( 'Are you sure?' )"
-                            ]
-                        ) !!}
+                        @if (Auth::user()->limited == "0")
+                            {!! Form::button(
+                                '<i class="material-icons">delete</i>',
+                                [
+                                    'type' => 'submit',
+                                    'class' => 'btn btn-danger btn-sm',
+                                    'onclick' => "return confirm( 'Are you sure?' )"
+                                ]
+                            ) !!}
+                        @endif
 
                     </div>
 
