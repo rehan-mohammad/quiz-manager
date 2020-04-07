@@ -22,9 +22,9 @@
 
         <p>
             @if ($question->active)
-                <i class="material-icons">check_box</i>
+                Yes
             @else
-                <i class="material-icons">cancel</i>
+                No
             @endif
         </p>
 
@@ -50,69 +50,22 @@
 <div>
 
     <p class="font-weight-bold mb-0">
-        Question Type:
+        Question Options:
     </p>
 
-    <?php switch ($question->question_type) {
-
-        case 1:
-            echo "<p>Text</p>";
-            break;
-
-        case 2:
-            echo "<p>Checkbox</p>";
-            break;
-
-        case 3:
-            echo "<p>Radio</p>";
-            break;
-
-    }
-
+    <p>
+    <?php
+    $questionOptions = json_decode($question->question_options);
     ?>
+
+    @foreach ($questionOptions as $option)
+        <p>{{$option}}</p>
+    @endforeach
 
     <hr>
 
 </div>
 
-@if($question->question_type != 1)
-    <div>
-
-        <p class="font-weight-bold mb-0">
-            Question Options:
-        </p>
-
-        <p>
-            <?php switch ($question->question_type) {
-
-                case 1:
-                    break;
-
-                case 2:
-                    $questionOptions = json_decode($question->question_options);
-
-                    foreach ($questionOptions as $option) {
-                        echo "<p>$option<p>";
-                    }
-                    break;
-
-                case 3:
-                    $questionOptions = json_decode($question->question_options);
-
-                    foreach ($questionOptions as $option) {
-                        echo "<p>$option<p>";
-                    }
-                    break;
-
-            }
-
-            ?>
-        </p>
-
-        <hr>
-
-    </div>
-@endif
 <div class="row">
     <div class="col-sm-6">
 
