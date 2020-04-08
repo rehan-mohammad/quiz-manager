@@ -6,7 +6,6 @@
 
         <th>Question</th>
         <th>Active:</th>
-        <th>Type:</th>
         <th colspan="3">
             Action
         </th>
@@ -26,25 +25,6 @@
                     @else
                         <i class="material-icons">cancel</i>
                     @endif
-                </td>
-                <td>
-                    <?php switch ($question->question_type) {
-
-                        case 1:
-                            echo "<p>Text</p>";
-                            break;
-
-                        case 2:
-                            echo "<p>Checkbox</p>";
-                            break;
-
-                        case 3:
-                            echo "<p>Radio</p>";
-                            break;
-
-                    }
-
-                    ?>
                 </td>
 
                 <td>
