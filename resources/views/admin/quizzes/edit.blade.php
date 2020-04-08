@@ -8,7 +8,7 @@
             Updating Quiz
         </div>
 
-        <div class="card-block">
+        <div class="card-block p-3">
 
             {!! Form::model(
                 $quiz,
