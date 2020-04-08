@@ -32,7 +32,7 @@
 
     {!! Form::label('is_admin', 'Permissions:') !!}
 
-    {!! Form::select('is_admin', ["1"=>"Edit", "0"=>"View", "2" => "Restricted"] , null, ['class' => 'form-control']) !!}
+    {!! Form::select('is_admin', ["1"=>"Edit", "0"=>"Restricted", "2" => "View"] , null, ['class' => 'form-control']) !!}
 
     {!! $errors->first('is_admin', '<div class="form-control-feedback">:message</div>') !!}
 
