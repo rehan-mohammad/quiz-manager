@@ -6,6 +6,7 @@ use App\Http\Requests\CreateAnswerRequest;
 use App\Http\Requests\UpdateAnswerRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Answer;
+use App\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -130,9 +131,11 @@ class AnswerController extends AppBaseController {
 
         $answer->update( $formInput );
 
+        $submission = Submission::find( $answer->submission_id );
+
         Session::flash( 'flash_message', 'Answer updated successfully.' );
 
-        return redirect( route( 'answers.index' ) );
+        return view( 'admin.submissions.edit', compact( 'submission' ) );
 
     }
 

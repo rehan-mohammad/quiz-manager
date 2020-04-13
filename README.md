@@ -1,72 +1,60 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# User Guide
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Installation
 
-## About Laravel
+####Setting  up the files
+1) Checkout the git repository into a new directory
+2) Setup your web server to point to the `/public` directory
+3) Run `composer install` within the root directory to install all of the composer dependencies
+4) Run `npm install` within the root directory to install all of the npm dependencies
+5) Run the command `npm run prod` to build the css.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+####Setting up the database
+1) Rename the `env.example` file in the root to `.env` and input your database credentials
+2) Run `php artisan migrate` within the root directory to setup the database with the tables and fields required
+3) Edit the `/database/seeds/UserSeeder` file to configure the users which the database will be pre-configured with, or leave it with the example users
+4) Run `php artisan db:seed` to populate the users table with the users specified in the seeder
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+####Styling
+The `resources/sass/_variables.scss` file contains the colour scheme which can be easily edited.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Run the command `npm run prod` after any changes are made.
 
-## Learning Laravel
+Header styling: `resources/sass/elements/_header.scss`.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Content container styling: `resources/sass/elements/_layout.scss`.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Quiz form styling: `resources/sass/elements/_quiz.scss`.
 
-## Laravel Sponsors
+## Using the Quiz Manager
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+###Admin
+After logging in, if you are logged in as an admin user, the Admin link will appear in the header. Upon clicking this you will be redirected to the admin dashboard. In the dashboard you are provided with links to the various sections of the admin on the left sidebar. Use these to view the data in those tables in the database, or if you have the Edit permission, you will also be able to create, edit and delete.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+####Creating a Quiz
 
-## Contributing
+- Slug - The text in the URL which will be used to navigate to this specific quiz.
+- Title - The main header which will display at the top of the quiz page.
+- Description - Will display below the title, allowing for you to provide more information that won't fit in the title.
+- Welcome text - Text which will display below the description as an introduction to the quiz. Can also be interpreted as a secondary description field.
+- Admin name - The name of the author of this quiz. Does not display on the frontend so is only used for reference when viewing a quiz from within the admin.
+- Starts at - Use this date input to specify which date the quiz will be valid from.
+- Expires at - Use this date input to specify which date the quiz will be valid to.
+- Active - This should be checked if you want the quiz to be visible. - NOTE: It will only be visible depending on if the current date lies within the start and expiration dates.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+####Creating a Question
 
-## Security Vulnerabilities
+- Question - The title of the question, to display above the options.
+- Quiz - This is a dropdown which will contain all of the quizzes created, so you can select a quiz to assign this question to.
+- Active - This should be checked if you want the question to be visible.
+- Order - Input a number in this field to determine where this question will appear in the quiz. This field is used to sort all questions within a quiz.
+- Option - Use this field to input the options for the answer to the question. Use the Add Option button to add more options.
+- Description - Will display below the title, allowing for you to provide more information that won't fit in the title.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+###Frontend
+After logging in, you will be able to view the quizzes on the frontend. These will only display if they are set to active and the current date falls within the Start and Expiry dates for this quiz.
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The quizzes are displayed in a table format. To access a quiz page, click the button in the quiz's row.
+
+From the quiz page, the quiz can be completed by selecting one option for each question and then clicking the submit button at the bottom. Upon submission, the user will be redirected to the homepage with a success message.

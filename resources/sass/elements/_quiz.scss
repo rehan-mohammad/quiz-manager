@@ -6,14 +6,15 @@
             display: block;
         }
 
-        p.option-text {
-            margin-right: 5px !important;
+        .option-text {
+            margin-right: 35px !important;
+
+            input {
+                display: inline-block;
+                margin-right: 5px;
+            }
         }
 
-        p {
-            display: inline-block;
-            margin-right: 35px;
-        }
     }
 
 }

@@ -6,10 +6,12 @@
 
         <div class="card-header">
             Answers&nbsp;
-            <a href="{!! route('answers.create') !!}" class="btn btn-primary btn-sm float-md-right" title="Create new answer">
-                <i class="material-icons">note_add</i>
-                &nbsp;Add new answer
-            </a>
+            @if (Auth::user()->limited == "0")
+                <a href="{!! route('answers.create') !!}" class="btn btn-primary btn-sm float-md-right" title="Create new answer">
+                    <i class="material-icons">note_add</i>
+                    &nbsp;Add new answer
+                </a>
+            @endif
         </div>
 
         <div class="card-block">

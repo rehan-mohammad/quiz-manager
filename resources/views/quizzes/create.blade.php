@@ -24,12 +24,18 @@
 
                 <div class="row">
 
-                    @foreach($quiz->questions()->get() as $question)
+                    <?php
+
+                        $questionIndex = 1;
+
+                    ?>
+
+                    @foreach($quiz->questions()->get()->sortBy('order') as $question)
 
                         <div class="form-group col-sm-12 quiz-form">
                             <hr>
 
-                            <h4>{!! Form::label('answer', $question->title) !!}</h4>
+                            <h4>{{$questionIndex}}. {!! Form::label('answer', $question->title) !!}</h4>
                             <small class="question-desc">{{ $question->description }}</small>
                             <br>
 
@@ -37,13 +43,17 @@
 
                             $questionOptions = json_decode($question->question_options);
 
+                            $optionIndex = 'A';
+
                             ?>
 
                             @foreach ($questionOptions as $option)
 
-                            <p class='option-text'>{{$option}}<p>
+                            <label class="option-text"><input type="radio" name="{{ 'answer[' . $question->id . '][answer]' }}" value="{{$option}}" required>{{$optionIndex}}. {{$option}}</label>
 
-                            {{ Form::radio('answer[' . $question->id . '][answer]', $option) }}
+                            <?php
+                                $optionIndex++;
+                            ?>
 
                             @endforeach
 
@@ -53,6 +63,8 @@
                             <input type="hidden" name="answer[{{ $question->id }}][quiz_id]"
                                    value="{{ $quiz->id }}">
                         </div>
+
+                        <?php $questionIndex++ ?>
 
                     @endforeach
 

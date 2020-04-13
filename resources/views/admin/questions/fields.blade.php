@@ -18,13 +18,23 @@
 
 </div>
 
-<div class="form-group col-sm-12 {{ $errors->has( 'active' ) ? 'has-danger' : ''}}">
+<div class="form-group col-sm-6 {{ $errors->has( 'active' ) ? 'has-danger' : ''}}">
 
-    {!! Form::label('active', 'active:') !!}
+    {!! Form::label('active', 'Enabled:') !!}
 
     {!! Form::checkbox('active', 1, ['class' => 'form-control']) !!}
 
     {!! $errors->first('active', '<div class="form-control-feedback">:message</div>') !!}
+
+</div>
+
+<div class="form-group col-sm-6 {{ $errors->has( 'active' ) ? 'has-danger' : ''}}">
+
+    {!! Form::label('order', 'Order:') !!}
+
+    {!! Form::number('order', null, ['class' => 'form-control']) !!}
+
+    {!! $errors->first('order', '<div class="form-control-feedback">:message</div>') !!}
 
 </div>
 

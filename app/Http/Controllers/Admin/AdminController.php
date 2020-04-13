@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -27,6 +29,11 @@ class AdminController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->is_admin != "1"){
+            Session::flash( 'flash_message', 'You do not have access to this page' );
+
+            return redirect( url( '/' ) );
+        }
 
         return view(
             'admin.index'

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateQuizRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Quiz;
 use App\Submission;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -33,7 +34,9 @@ class QuizController extends AppBaseController
     public function index(Request $request)
     {
 
-        $quizzes = Quiz::all();
+        $now = new DateTime();
+
+        $quizzes = Quiz::all()->where('starts_at', '<=', $now)->where('expires_at', '>=', $now);
 
         return view('quizzes.index', compact('quizzes'));
 
@@ -48,6 +51,24 @@ class QuizController extends AppBaseController
     {
 
         $quiz = Quiz::where('slug', '=', $slug)->first();
+
+        $now = new DateTime();
+
+        if($quiz->starts_at > $now) {
+
+
+            Session::flash( 'flash_message', 'This Quiz is not available yet. Please contact an administrator' );
+
+            return redirect( url( '/' ) );
+        }
+
+        if($quiz->expires_at <= $now) {
+
+
+            Session::flash( 'flash_message', 'This Quiz has expired. Please contact an administrator' );
+
+            return redirect( url( '/' ) );
+        }
 
         return view('quizzes.create', compact('quiz'));
 
@@ -91,7 +112,7 @@ class QuizController extends AppBaseController
             ]);
         }
 
-        Session::flash('flash_message', 'Thanks for your submission');
+        Session::flash('flash_message', 'This submission has been recorded. Thank you');
 
         return redirect(url('/'));
 

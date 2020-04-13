@@ -6,7 +6,7 @@
 
         <th>Quiz</th>
         <th>Date</th>
-        <th>IP Address</th>
+        <th>User</th>
         <th colspan="3">
             Action
         </th>
@@ -21,7 +21,7 @@
 
                 <td>{{ $submission->quiz->title }}</td>
                 <td>{{ $submission->created_at->format('jS F Y') }}</td>
-                <td>{!! $submission->ip_address !!}</td>
+                <td>{!! $submission->user->name !!} ({!! $submission->user->email !!})</td>
 
                 <td>
 
@@ -34,6 +34,10 @@
                         </a>
 
                         @if (Auth::user()->limited == "0")
+                            <a href="{!! route('submissions.edit', [$submission->id]) !!}" class='btn btn-primary btn-sm'>
+                                <i class="material-icons">mode_edit</i>
+                            </a>
+
                             {!! Form::button(
                                 '<i class="material-icons">delete</i>',
                                 [

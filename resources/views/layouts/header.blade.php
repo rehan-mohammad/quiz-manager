@@ -8,7 +8,6 @@
 
         @if (Auth::guest())
             <a class="nav-link" role="button" href="{{ route('login') }}">Login</a>
-            <a class="nav-link" role="button" href="{{ route('register') }}">Register</a>
 
         @else
             @if (Auth::user()->is_admin == "1")

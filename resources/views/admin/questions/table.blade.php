@@ -6,6 +6,7 @@
 
         <th>Question</th>
         <th>Active:</th>
+        <th>Quiz</th>
         <th colspan="3">
             Action
         </th>
@@ -25,6 +26,10 @@
                     @else
                         <i class="material-icons">cancel</i>
                     @endif
+                </td>
+
+                <td>
+                    {{ $question->quiz->title }}
                 </td>
 
                 <td>

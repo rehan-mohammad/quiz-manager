@@ -22,7 +22,8 @@ class Question extends Model
         'quiz_id',
         'active',
         'description',
-        'question_options'
+        'question_options',
+        'order'
     ];
 
     /**

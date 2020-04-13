@@ -8,7 +8,7 @@
 
 </div>
 
-<div class="form-group col-sm-6 {{ $errors->has( 'question_id' ) ? 'has-danger' : ''}}">
+<div class="form-group d-none col-sm-6 {{ $errors->has( 'question_id' ) ? 'has-danger' : ''}}">
 
     {!! Form::label('question_id', 'question_id:') !!}
 
@@ -18,13 +18,24 @@
 
 </div>
 
-<div class="form-group col-sm-6 {{ $errors->has( 'survey_id' ) ? 'has-danger' : ''}}">
+<div class="form-group d-none col-sm-6 {{ $errors->has( 'quiz_id' ) ? 'has-danger' : ''}}">
 
     {!! Form::label('quiz_id', 'quiz_id:') !!}
 
     {!! Form::text('quiz_id', null, ['class' => 'form-control']) !!}
 
         {!! $errors->first('quiz_id', '<div class="form-control-feedback">:message</div>') !!}
+
+</div>
+
+
+<div class="form-group d-none col-sm-6 {{ $errors->has( 'submission_id' ) ? 'has-danger' : ''}}">
+
+    {!! Form::label('submission_id', 'submission id:') !!}
+
+    {!! Form::text('submission_id', null, ['class' => 'form-control']) !!}
+
+        {!! $errors->first('submission_id', '<div class="form-control-feedback">:message</div>') !!}
 
 </div>
 

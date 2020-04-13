@@ -7,6 +7,7 @@
         <th>User</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Permissions</th>
         <th colspan="3">
             Action
         </th>
@@ -35,6 +36,20 @@
                 </td>
                 <td>{!! $user->name !!}</td>
                 <td>{!! $user->email !!}</td>
+                <td>
+                    @if($user->is_admin == 1 && $user->limited == 0)
+                        Edit
+                    @endif
+
+                    @if($user->is_admin == 1 && $user->limited == 1)
+                        View
+                    @endif
+
+                    @if($user->is_admin == 0)
+                        Restricted
+                    @endif
+
+                </td>
 
                 <td>
 

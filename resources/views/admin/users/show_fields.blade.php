@@ -1,23 +1,3 @@
-<div>
-
-    <?php switch ($user->is_admin) {
-
-        default:
-            echo "<h3>Guest</h3>";
-            break;
-
-        case 1:
-            echo "<h3>Admin</h3>";
-            break;
-
-    }
-
-    ?>
-
-    <hr>
-
-</div>
-
 <div class="row">
     <div class="col-sm-6">
 
@@ -71,6 +51,32 @@
 
         <p>
             {!! $user->updated_at !!}
+        </p>
+
+        <hr>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+
+        <p class="font-weight-bold mb-0">
+            Permissions:
+        </p>
+
+        <p>
+            @if($user->is_admin == 1 && $user->limited == 0)
+                Edit
+            @endif
+
+            @if($user->is_admin == 1 && $user->limited == 1)
+                View
+            @endif
+
+            @if($user->is_admin == 0)
+                Restricted
+            @endif
         </p>
 
         <hr>

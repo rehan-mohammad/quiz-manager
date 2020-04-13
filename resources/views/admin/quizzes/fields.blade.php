@@ -70,7 +70,7 @@
 
 <div class="form-group col-sm-6 {{ $errors->has( 'active' ) ? 'has-danger' : ''}}">
 
-    {!! Form::label('active', 'active:') !!}
+    {!! Form::label('active', 'Enabled:') !!}
 
     {!! Form::checkbox('active', 1, ['class' => 'form-control']) !!}
 

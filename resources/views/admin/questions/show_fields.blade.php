@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-sm-6">
+    <div class="col-sm-3">
 
         <p class="font-weight-bold mb-0">
             Id:
@@ -8,6 +8,20 @@
 
         <p>
             {!! $question->id !!}
+        </p>
+
+        <hr>
+
+    </div>
+
+    <div class="col-sm-3">
+
+        <p class="font-weight-bold mb-0">
+            Order:
+        </p>
+
+        <p>
+            {!! $question->order !!}
         </p>
 
         <hr>
@@ -33,20 +47,38 @@
     </div>
 </div>
 
-<div>
+<div class="row">
 
-    <p class="font-weight-bold mb-0">
-        Question:
-    </p>
+    <div class="col-sm-6">
 
-    <p>
-        {!! $question->title !!}
-    </p>
+        <p class="font-weight-bold mb-0">
+            Question:
+        </p>
 
-    <hr>
+        <p>
+            {!! $question->title !!}
+        </p>
+
+        <hr>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <p class="font-weight-bold mb-0">
+            Quiz:
+        </p>
+
+        <p>
+            {!! $question->quiz->title !!}
+        </p>
+
+        <hr>
+
+    </div>
+
 
 </div>
-
 <div>
 
     <p class="font-weight-bold mb-0">
